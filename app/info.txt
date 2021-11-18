@@ -1,0 +1,119 @@
+ubuntuからWINのエクスプローラーを開く（WSLのパスの確認ができる）
+$ explorer.exe .
+
+
+source ./dev_env/bin/activate
+
+https://docs.djangoproject.com/en/3.2/
+
+#仮想環境作成
+$ python3 -m venv menv
+#仮想環境をアクティベート
+$ . ./menv/bin/activate
+
+apache2 confファイルの編集メモ
+
+LoadModule wsgi_module "/mnt/c/dev/django/menv/lib/python3.8/site-packages/mod_wsgi/server/mod_wsgi-py38.cpython-38-x86_64-linux-gnu.so"
+WSGIPythonHome "/mnt/c/dev/django/menv"
+
+  WSGIScriptAlias / /mnt/c/dev/django/tweet/wsgi.py
+  WSGIDaemonProcess django  python-path=path/to/menv:/mnt/c/dev/django/menv/lib/python3.8/site-packages
+  WSGIProcessGroup django
+
+<VirtualHost *:80>
+  <Directory /mnt/c/dev/django>
+    <Files wsgi.py>
+      Require all granted
+    </Files>
+  </Directory>
+  Alias /static/ /mnt/c/dev/django/static/
+  <Directory /mnt/c/dev/django/static>
+    Require all granted
+    </Directory>
+</VirtualHost>
+
+pip install -r requirements.txt
+
+python manage.py runserver 127.0.0.1:8008
+
+python manage.py migrate
+
+
+アパッチの設定メモ
+sudo service apache2 reload
+sudo apachectl restart
+sudo vi /etc/apache2/sites-available/django.conf
+sudo vi  /etc/apache2/sites-enabled/django.conf
+sudo vi /etc/apache2/apache2.conf
+tail -f /var/log/apache2/error.log
+sudo a2ensite django
+
+python-path
+/mnt/c/dev/django/menv/lib/python3.8/site-packages
+
+"C:\dev\django"= /mnt/c/dev/django
+
+ポート変更
+sudo vi /etc/apache2/ports.conf
+
+参考資料
+https://www.51weblab.jp/web/deploy_django_project_with_apache_mod_wsgi_of_wsl/
+https://qiita.com/studio_haneya/items/f85f1ed0ab9bbfdb380f
+https://docs.djangoproject.com/ja/3.0/howto/deployment/wsgi/modwsgi/
+https://www.youtube.com/watch?v=Xjdv31k-Kf4&t=2729s
+
+ブラウザで接続エラー対策したこと
+sys.path.append('/mnt/c/dev/django')
+sys.path.append('/mnt/c/dev/django/tweet') をWSGI>PYに追加
+
+vi エディタの操作
+i: 文字入力モード　INSERT
+esc:　コマンドモード　下記の操作
+:q　セーブなしで退室
+:wq　セーブして退室
+:qa!　
+x:　一文字消去
+dd:　一行消去
+
+
+admin 関連
+スーパーユーザーの作成　 python manage.py createsuperuser
+login name:masami pw:syks777
+
+デプロイ時のPIPファイル移動
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
