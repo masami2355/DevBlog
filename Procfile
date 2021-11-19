@@ -1,3 +1,3 @@
-web: gunicorn develop.wsgi --log-file --
+web: gunicorn develop.wsgi 
 
 
