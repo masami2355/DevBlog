@@ -26,7 +26,6 @@ SECRET_KEY = 'django-insecure-lky_hnob=+()0qu)i%85fey*g5x_8137h-ho&hw*pa)si2$ec7
 DEBUG = True
 
 ALLOWED_HOSTS = ['lit-shore-48533.herokuapp.com']
-lit-shore-48533.herokuapp.com
 
 # Application definition
 
