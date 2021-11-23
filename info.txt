@@ -100,6 +100,26 @@ settings.pyに'HOST': 'ec2-3-92-15-1.compute-1.amazonaws.com',  とポート番�
 USER uaqbqddanjihuh
 pw a93164578b668292ed34679490b972cd0eb8e6b6d86be3bb07be1ee173fdfa4d
 
+python manage.py migrate
+git add .
+git commit -m ""
+git push heroku main
+
+
+ホスト
+ec2-3-92-15-1.compute-1.amazonaws.com
+データベース
+d78qtgmr3j0v20
+ユーザー
+uaqbqddanjihuh
+港
+5432
+パスワード
+a93164578b668292ed34679490b972cd0eb8e6b6d86be3bb07be1ee173fdfa4d
+URI
+postgresの：// uaqbqddanjihuh ：a93164578b668292ed34679490b972cd0eb8e6b6d86be3bb07be1ee173fdfa4d @ ec2-3-92-15-1.compute-1.amazonaws.com ：5432 / d78qtgmr3j0v20
+Heroku CLI
+heroku pg：psql postgresql-tapered-74271 --app lit-shore-48533
 
 
 
