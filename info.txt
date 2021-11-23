@@ -87,8 +87,18 @@ login name:masami pw:syks777
 pip freeze > requirements.txt
 pip install -r requirements.txt
 
-
-
+postgres とdjangoの接続
+sudo apt install libpq-dev
+pip install psycopg2
+へロクサイトのアプリ覧からsettings config vars database_url から下記を取得
+postgres://uaqbqddanjihuh:a93164578b668292ed34679490b972cd0eb8e6b6d86be3bb07be1ee173fdfa4d@ec2-3-92-15-1.compute-1.amazonaws.com:5432/d78qtgmr3j0v20
+上記の最後の部分　d78qtgmr3j0v20　がデータベース名
+settings.pyのdatabase NAME:に張り付ける
+続いてHOST名を上記からコピー
+ec2-3-92-15-1.compute-1.amazonaws.com
+settings.pyに'HOST': 'ec2-3-92-15-1.compute-1.amazonaws.com',  とポート番号　'PORT': 5432 を追加
+USER uaqbqddanjihuh
+pw a93164578b668292ed34679490b972cd0eb8e6b6d86be3bb07be1ee173fdfa4d
 
 
 
