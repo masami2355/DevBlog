@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-lky_hnob=+()0qu)i%85fey*g5x_8137h-ho&hw*pa)si2$ec7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1'] #lit-shore-48533.herokuapp.com #127.0.0.1:8008
+ALLOWED_HOSTS = ['lit-shore-48533.herokuapp.com'] #lit-shore-48533.herokuapp.com #127.0.0.1:8008
 
 # Application definition
 
