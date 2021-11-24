@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'widget_tweaks',
-    'accounts',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    #'accounts',
+    #'django.contrib.sites',
+    #'allauth',
+    #'allauth.account',
+    #'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -153,15 +153,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-
-
-AUTH_USER_MODEL = 'accounts.CustomUser'
-ACCOUNT_AUTHENTICATION_METHOD = 'user'
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_REQIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
+#SITE_ID = 1
+#LOGIN_REDIRECT_URL = '/'
+#ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+#ACCOUNT_EMAIL_VERIFICATION = 'none'
+#
+#
+#AUTH_USER_MODEL = 'accounts.CustomUser'
+#ACCOUNT_AUTHENTICATION_METHOD = 'user'
+#ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+#ACCOUNT_EMAIL_REQIRED = True
+#ACCOUNT_USERNAME_REQUIRED = False
  
