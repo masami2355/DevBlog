@@ -21,26 +21,7 @@
         {% endfor %}
 
     </div>
-</div>
-        <ul class="pagination">           
-            {% if page_obj.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="?page=1">&laquo; first</a>
-            </li>
-            <li class="page-item">    
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
-            </li>
-            {% endif %}
 
-            <li class="page-item" abtive>
-                <a href="#" class="page-link">{{ page_obj.number }}<span class="sr-only">(current)</span></a> 
-            </li>
-
-            {% if page_obj.has_next %}           
-                <a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
-                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}        
-        </ul>   
 {% endblock content %}
 
 

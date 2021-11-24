@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-lky_hnob=+()0qu)i%85fey*g5x_8137h-ho&hw*pa)si2$ec7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lit-shore-48533.herokuapp.com'] #lit-shore-48533.herokuapp.com
+ALLOWED_HOSTS = ['127.0.0.1'] #lit-shore-48533.herokuapp.com #127.0.0.1:8008
 
 # Application definition
 
@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'widget_tweaks',
+    'accounts',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -148,4 +153,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+ACCOUNT_AUTHENTICATION_METHOD = 'user'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ 

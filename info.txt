@@ -100,6 +100,7 @@ settings.pyに'HOST': 'ec2-3-92-15-1.compute-1.amazonaws.com',  とポート番�
 USER uaqbqddanjihuh
 pw a93164578b668292ed34679490b972cd0eb8e6b6d86be3bb07be1ee173fdfa4d
 
+$python manage.py createsuperuser パスワードの再設定
 python manage.py migrate
 git add .
 git commit -m ""
@@ -124,17 +125,32 @@ heroku pg：psql postgresql-tapered-74271 --app lit-shore-48533
 
 
 
+カスタムユーザーの作成
+django-allauth~=0.41.0
+
+python3 manage.py startapp accounts
+
+
+settings.py
+    'accounts',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccounts',
+]
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 
 
+modelsの作成
 
-
-
-
-
-
-
-
+myenv=>lib=>site-packages=>django=>contrib=>auth=>models.py　を上書きして設定を変更する
+class UserManager(BaseUserManager):をコピーしてaccounts.models.pyに張り付ける
+class AbstractUser(AbstractBaseUser, PermissionsMixin):をコピーしてaccounts.models.pyに張り付ける
 
 
 

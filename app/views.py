@@ -59,9 +59,9 @@ class IndexView(ListView):
     #def listing(request):    
         post_data = Post.objects.order_by('-id')
         #post_data = Post.objects.all()
-        paginator = Paginator(post_data, 3)
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
+        #paginator = Paginator(post_data, 3)
+        #page_number = request.GET.get('page')
+        #page_obj = paginator.get_page(page_number)
         
         #検索フォームテスト中
         #rqset = Post.objects.all.filter(title__exact='')
@@ -71,7 +71,7 @@ class IndexView(ListView):
 
         return render(request, 'app/post_list.html', {
             'post_data': post_data,
-            'page_obj': page_obj,
+            #'page_obj': page_obj,
             'myFilter': myFilter
         })
         
