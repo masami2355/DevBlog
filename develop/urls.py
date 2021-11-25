@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.decorators import login_required
+
+from django.views.generic import TemplateView
+from regist import views
+
+index_view = TemplateView.as_view(template_name='regist/index.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('app.urls')),
-   # path('accounts/', include('accounts.urls')),
+    path('home', include('app.urls')),
+    path("", login_required(index_view), name="index"),
+    path('', include("django.contrib.auth.urls")),
+    path('signup/', views.SignUpView.as_view(), name="signup"),
+    path('activate/<uidb64>/<token>/', views.ActivateView.as_view(), name='activate'),
 ]

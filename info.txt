@@ -39,7 +39,7 @@ pip install -r requirements.txt
 
 python manage.py runserver 127.0.0.1:8008
 
-python manage.py migrate
+python3 manage.py migrate
 
 
 アパッチの設定メモ
@@ -153,7 +153,7 @@ class UserManager(BaseUserManager):をコピーしてaccounts.models.pyに張り
 class AbstractUser(AbstractBaseUser, PermissionsMixin):をコピーしてaccounts.models.pyに張り付ける
 
 
-
+python manage.py runsslserver 127.0.0.1:8008
 
 
 

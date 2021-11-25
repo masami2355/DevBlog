@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1'] #lit-shore-48533.herokuapp.com #127.0.0.1:8008
 # Application definition
 
 INSTALLED_APPS = [
+    'regist',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,11 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'widget_tweaks',
+    'sslserver',
     #'accounts',
     'django.contrib.sites',
     'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    #'allauth.account',
+    #'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -167,15 +169,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# allauthの設定
 SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-#
-#
+LOGOUT_REDIRECT_URL = '/login/'
+#ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+
+
+
+#https用の設定　ローカル環境ではエラーになるのでコメントアウトにしておく
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_SSL_REDIRECT = True
+
+
+#カスタムユーザーの設定
 #AUTH_USER_MODEL = 'accounts.CustomUser'
-#ACCOUNT_AUTHENTICATION_METHOD = 'user'
+#ACCOUNT_AUTHENTICATION_METHOD = 'email'
 #ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 #ACCOUNT_EMAIL_REQIRED = True
 #ACCOUNT_USERNAME_REQUIRED = False
  
+AUTH_USER_MODEL = 'regist.User'
