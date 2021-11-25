@@ -3,8 +3,8 @@ from django.views.generic import ListView, DetailView, View
 from .models import Post
 from .forms import PostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import Paginator
-from .filters import TitleFilter
+#from django.core.paginator import Paginator
+#from .filters import TitleFilter
 
 #from .models import Contact
 
@@ -51,28 +51,28 @@ class CreatePostView(LoginRequiredMixin, View):
 #    template_name = 'app/index.html'
 
 class IndexView(ListView):
-    #template_name = 'app/index.html'
+    template_name = 'app/index.html'
     model = Post     
     #paginate_by = 2
        
     def get(self, request, *args, **kargs):
     #def listing(request):    
-        post_data = Post.objects.order_by('-id')
-        #post_data = Post.objects.all()
+        #post_data = Post.objects.order_by('-id')
+        post_data = Post.objects.all()
         #paginator = Paginator(post_data, 3)
         #page_number = request.GET.get('page')
         #page_obj = paginator.get_page(page_number)
         
         #検索フォームテスト中
         #rqset = Post.objects.all.filter(title__exact='')
-        rqset = post_data
-        myFilter = TitleFilter(request.GET, queryset=rqset)
-        post_data = myFilter.qs
+        #rqset = post_data
+        #myFilter = TitleFilter(request.GET, queryset=rqset)
+        #post_data = myFilter.qs
 
         return render(request, 'app/post_list.html', {
-            'post_data': post_data,
+            'post_data': post_data
             #'page_obj': page_obj,
-            'myFilter': myFilter
+            #'myFilter': myFilter
         })
         
  
