@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-lky_hnob=+()0qu)i%85fey*g5x_8137h-ho&hw*pa)si2$ec7
 DEBUG = True 
 #DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1'] #lit-shore-48533.herokuapp.com #127.0.0.1:8008
+ALLOWED_HOSTS = ['lit-shore-48533.herokuapp.com'] #lit-shore-48533.herokuapp.com #127.0.0.1:8008
 
 # Application definition
 
@@ -83,16 +83,18 @@ WSGI_APPLICATION = 'develop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-import dj_database_url
-from dotenv import(
-    find_dotenv,
-    load_dotenv
-)
-load_dotenv(find_dotenv())
 
-DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600),
-}
+#ローカルテスト用
+#import dj_database_url
+#from dotenv import(
+#    find_dotenv,
+#    load_dotenv
+#)
+#load_dotenv(find_dotenv())
+#
+#DATABASES = {
+#    'default': dj_database_url.config(conn_max_age=600),
+#}
 
 
 #DATABASES = {
@@ -103,16 +105,16 @@ DATABASES = {
 #}
 
 #heroku用
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'd78qtgmr3j0v20',
-#        'HOST': 'ec2-3-92-15-1.compute-1.amazonaws.com',
-#        'PORT': 5432,
-#        'USER': 'uaqbqddanjihuh',
-#        'PASSWORD': 'a93164578b668292ed34679490b972cd0eb8e6b6d86be3bb07be1ee173fdfa4d',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd78qtgmr3j0v20',
+        'HOST': 'ec2-3-92-15-1.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'uaqbqddanjihuh',
+        'PASSWORD': 'a93164578b668292ed34679490b972cd0eb8e6b6d86be3bb07be1ee173fdfa4d',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -181,8 +183,8 @@ LOGOUT_REDIRECT_URL = '/login/'
 
 
 #https用の設定　ローカル環境ではエラーになるのでコメントアウトにしておく
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-#SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
 
 
 #カスタムユーザーの設定
